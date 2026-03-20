@@ -3,165 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Рядом - Поддержка родителей особенных детей</title>
-    
+    <title>Рядом с вами - Поддержка родителей особенных детей</title>
     <style>
-        /* --- ОБЩИЕ НАСТРОЙКИ --- */
-        body { background-color: #fdfaf6; color: #4a4a4a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        .header-section { text-align: center; padding: 50px 20px 30px; }
-        .logo-container { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
-        .logo-text { font-size: 32px; font-weight: bold; color: #7b9ea8; letter-spacing: 1px; }
-        h1 { color: #4a4a4a; font-size: 36px; margin-bottom: 15px; margin-top: 0; }
-        .subtitle { font-size: 20px; line-height: 1.6; max-width: 800px; margin: 0 auto; color: #666666; }
-        
-        /* --- БЛОК ОБ АВТОРЕ --- */
-        .author-block {
-            background-color: #ffffff;
-            max-width: 800px;
-            margin: 0 auto 50px auto;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-            text-align: center;
-        }
-        .author-photo {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 20px auto;
-            border: 4px solid #fdfaf6;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            display: block;
-        }
-        .author-name {
-            font-size: 26px;
-            color: #7b9ea8;
-            margin: 0 0 5px 0;
-        }
-        .author-role {
-            font-size: 14px;
-            color: #d4a373;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .author-bio {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #555555;
-            margin: 0;
-        }
+        /* --- ОСНОВНЫЕ СТИЛИ --- */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f7f3; color: #333; margin: 0; padding: 0; line-height: 1.6; transition: background-color 0.3s, color 0.3s; }
+        header { background-color: #7b9ea8; color: white; padding: 40px 20px; text-align: center; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 2.5em; letter-spacing: 1px; }
+        header p { font-size: 1.2em; margin-top: 10px; opacity: 0.9; }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .about-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 40px; border-left: 5px solid #d4a373; transition: background-color 0.3s, color 0.3s; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, background-color 0.3s, color 0.3s; text-align: center; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: #7b9ea8; margin-top: 0; transition: color 0.3s; }
 
-        /* --- СЕТКА КАРТОЧЕК --- */
-        .diagnoses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto 60px auto; padding: 0 20px; }
-        .card { background-color: #ffffff; border-radius: 20px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04); transition: transform 0.3s ease, box-shadow 0.3s ease; overflow: hidden; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06); }
-        .card-image { width: 100%; height: 220px; object-fit: cover; display: block; }
-        .card-content { padding: 30px; flex-grow: 1; }
-        .card h2 { color: #d4a373; margin-top: 0; font-size: 24px; margin-bottom: 15px; }
-        .card p { font-size: 15px; line-height: 1.6; color: #555555; margin-bottom: 12px; }
-        .card p strong { color: #4a4a4a; }
-        
-        /* --- ПОДВАЛ И БЛОКИ ПОДДЕРЖКИ --- */
-        .footer-section { text-align: center; padding: 50px 20px 30px; background-color: #f4efea; margin-top: 50px; }
-        .support-block, .telegram-block { background-color: #ffffff; max-width: 600px; margin: 0 auto 30px auto; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); }
-        .support-block h3, .telegram-block h3 { color: #d4a373; margin-top: 0; font-size: 22px; }
-        .phone-number { display: inline-block; font-size: 28px; font-weight: bold; color: #7b9ea8; text-decoration: none; margin: 15px 0; padding: 10px 25px; border: 2px solid #7b9ea8; border-radius: 12px; transition: all 0.3s ease; }
-        .phone-number:hover { background-color: #7b9ea8; color: #ffffff; }
-        .phone-details { font-size: 14px; color: #888888; }
-        
-        /* --- КНОПКА TELEGRAM --- */
-        .telegram-button { display: inline-flex; align-items: center; justify-content: center; background-color: #7b9ea8; color: #ffffff; font-size: 18px; font-weight: bold; text-decoration: none; padding: 15px 30px; border-radius: 12px; margin-top: 15px; transition: all 0.3s ease; }
-        .telegram-button:hover { background-color: #d4a373; transform: translateY(-3px); box-shadow: 0 6px 15px rgba(212, 163, 115, 0.4); }
-        .telegram-icon { margin-right: 12px; fill: #ffffff; width: 24px; height: 24px; }
-        .disclaimer { font-size: 14px; color: #999999; max-width: 800px; margin: 0 auto; }
-        
-        /* --- АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ ТЕЛЕФОНОВ --- */
-        @media (max-width: 768px) {
-            .header-section { padding: 30px 15px 20px; }
-            h1 { font-size: 26px; }
-            .subtitle { font-size: 16px; }
-            
-            /* Настройки блока автора для телефона */
-            .author-block { padding: 25px 20px; margin: 0 15px 40px 15px; }
-            .author-photo { width: 110px; height: 110px; }
-            .author-name { font-size: 22px; }
-            .author-bio { font-size: 14px; }
+        /* --- НОЧНОЙ РЕЖИМ --- */
+        body.dark-theme { background-color: #1a1a2e; color: #e0e0e0; }
+        body.dark-theme header { background-color: #16213e; color: #e0e0e0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); }
+        body.dark-theme .about-section, body.dark-theme .card { background-color: #0f3460; color: #e0e0e0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); border-left-color: #7b9ea8; }
+        body.dark-theme .card h3 { color: #d4a373; }
 
-            .card-image { height: 180px; }
-            .card-content { padding: 20px; }
-            .card h2 { font-size: 20px; }
-            .card p { font-size: 14px; }
-            .diagnoses-grid { gap: 20px; }
-            .footer-section { padding: 30px 15px 20px; margin-top: 30px; }
-            .support-block, .telegram-block { padding: 20px; }
-            .phone-number { font-size: 22px; padding: 8px 15px; }
-            .logo-text { font-size: 26px; }
-            .telegram-button { font-size: 16px; padding: 12px 20px; width: 100%; box-sizing: border-box; }
-        }
+        .theme-toggle-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 28px; cursor: pointer; transition: transform 0.3s ease; }
+        .theme-toggle-btn:hover { transform: scale(1.1); }
+
+        /* --- ПЛАВАЮЩАЯ КНОПКА TELEGRAM --- */
+        .floating-telegram { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background-color: #7b9ea8; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(123, 158, 168, 0.4); z-index: 1000; transition: transform 0.3s ease, background-color 0.3s ease; animation: pulse-animation 2s infinite; }
+        .floating-telegram:hover { transform: scale(1.1); background-color: #d4a373; }
+        .floating-telegram svg { width: 35px; height: 35px; }
+        @keyframes pulse-animation { 0% { box-shadow: 0 0 0 0 rgba(123, 158, 168, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(123, 158, 168, 0); } 100% { box-shadow: 0 0 0 0 rgba(123, 158, 168, 0); } }
+        @media (max-width: 768px) { header h1 { font-size: 2em; } .theme-toggle-btn { top: 15px; right: 15px; font-size: 24px; } .floating-telegram { bottom: 20px; right: 20px; width: 55px; height: 55px; } .floating-telegram svg { width: 30px; height: 30px; } }
     </style>
 </head>
 <body>
-
-    <header class="header-section">
-        <div class="logo-container">
-            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#d4a373" opacity="0.8"/>
-                <path d="M12 19l-1.1-1C6.4 13.9 3 10.9 3 7.5 3 5 4.5 3 7 3c1.4 0 2.7.7 3.5 1.9C11.3 3.7 12.6 3 14 3c2.5 0 4 2 4 4.5 0 3.4-3.4 6.4-7.9 10.5L12 19z" fill="#7b9ea8"/>
-            </svg>
-            <span class="logo-text">Рядом</span>
-        </div>
-        <h1>Информационная поддержка для родителей</h1>
-        <p class="subtitle">Это место, где особенность — это не диагноз, а другой путь к великому.</p>
+    <header>
+        <button id="theme-toggle" class="theme-toggle-btn" title="Включить ночной режим">🌙</button>
+        <h1>Рядом с вами</h1>
+        <p>Безопасное пространство для родителей особенных детей</p>
     </header>
+    
+    <main class="container">
+        <section class="about-section">
+            <h2>Давайте знакомиться 🤍</h2>
+            <p>Меня зовут Дина, я из Нальчика. Моему сыну 8 лет, у нас РАС. Наш ежедневный вызов — непредсказуемость и сенсорные перегрузки. Я по себе знаю, как часто бывает страшно, непонятно и очень одиноко.</p>
+            <p>Именно мой сын привел меня в профессию. Чтобы разобраться в его состоянии и помочь, я стала практикующим психологом. Сейчас я работаю как семейный, кризисный и детский коррекционный психолог. Здесь я с вами не только как мама, которая всё понимает изнутри, но и как специалист, готовый бережно поддержать.</p>
+        </section>
 
-    <div class="author-block">
-        <img src="author.png" alt="Фото автора" class="author-photo">
-        
-        <h2 class="author-name">Имя Фамилия</h2>
-        <div class="author-role">Автор проекта "Рядом"</div>
-        
-        <p class="author-bio">
-            Привет! Я создал этот сайт, потому что сам прошел через сложный путь принятия и поиска информации. Я знаю, как бывает страшно и одиноко, когда сталкиваешься с диагнозом ребенка. Этот проект — моя попытка обнять каждого родителя через экран и сказать: «Ты не один, мы справимся». Здесь я собираю бережную информацию и создаю безопасное пространство для нас всех.
-        </p>
-    </div>
+        <section class="cards-grid">
+            <div class="card">
+                <h3>Аутизм (РАС)</h3>
+                <p>Как справляться с сенсорными перегрузками, выстраивать коммуникацию и находить ресурс в бесконечной тревоге.</p>
+            </div>
+            <div class="card">
+                <h3>ДЦП</h3>
+                <p>Поддержка в период тяжелых реабилитаций, принятие диагноза и поиск радости в каждом новом дне.</p>
+            </div>
+            <div class="card">
+                <h3>Задержка речи</h3>
+                <p>Жизнь в состоянии неопределенности: как выдерживать давление окружающих и помогать ребенку раскрыться.</p>
+            </div>
+        </section>
+    </main>
 
-    <div class="diagnoses-grid">
-        <div class="card"><img src="1.png" alt="Задержка речи" class="card-image"><div class="card-content"><h2>Задержка речи (ЗПРР)</h2><p><strong>Волшебный взгляд:</strong> Ваш малыш — это хранитель тишины или мудрец, который копит слова внутри себя. У него внутри уже есть целый океан мыслей, но пока он не нашел мостик, чтобы перевести их на наш язык.</p><p><strong>Мягкая реальность:</strong> Нервной системе ребенка нужно чуть больше времени и помощь, чтобы выстроить нейронные связи, отвечающие за речь. С помощью логопеда мы поможем ему построить этот мостик.</p></div></div>
-        <div class="card"><img src="2.png" alt="Аутизм" class="card-image"><div class="card-content"><h2>Аутизм / РАС</h2><p><strong>Волшебный взгляд:</strong> Ваш ребенок — исследователь с другой планеты. На Земле для него гравитация чувствуется иначе, свет кажется слишком ярким. Ему просто нужен надежный проводник в этом шумном мире.</p><p><strong>Мягкая реальность:</strong> Расстройство аутистического спектра означает, что мозг обрабатывает информацию иначе. Ваша задача — с помощью терапии и бережного отношения помочь ему адаптироваться.</p></div></div>
-        <div class="card"><img src="3.png" alt="ДЦП" class="card-image"><div class="card-content"><h2>Детский церебральный паралич</h2><p><strong>Волшебный взгляд:</strong> Это дети, чье тело танцует под свою собственную музыку. Они похожи на космонавтов, которые учатся управлять своим кораблем в условиях непривычной гравитации. Каждое движение — это подвиг.</p><p><strong>Мягкая реальность:</strong> ДЦП — это состояние, при котором нарушена связь между мозгом и мышцами. Это не болезнь. С помощью регулярной реабилитации ребенок может улучшить контроль над телом.</p></div></div>
-        <div class="card"><img src="4.png" alt="Умственная отсталость" class="card-image"><div class="card-content"><h2>Умственная отсталость (УО)</h2><p><strong>Волшебный взгляд:</strong> Это дети, живущие в своем, более неспешном и размеренном ритме. В то время как мир вокруг куда-то мчится, они учат нас останавливаться, радоваться простым вещам и любить безусловно.</p><p><strong>Мягкая реальность:</strong> Интеллектуальное развитие ребенка идет по своему графику. Ему сложнее усваивать абстрактные понятия, но при поддержке дефектологов дети отлично осваивают бытовые навыки.</p></div></div>
-        <div class="card"><img src="5.png" alt="РПП" class="card-image"><div class="card-content"><h2>Расстройство пищевого поведения</h2><p><strong>Волшебный взгляд:</strong> Представьте, что внутреннее зеркало подростка стало кривым. Это сложный эмоциональный лабиринт, в котором ребенок временно заблудился, пытаясь обрести контроль над тревогой.</p><p><strong>Мягкая реальность:</strong> Это психологическое состояние, при котором нарушаются отношения с едой и телом. В корне лежат глубинные переживания. Требуется бережная помощь психотерапевта и поддержка семьи.</p></div></div>
-        <div class="card"><img src="6.png" alt="ОКР" class="card-image"><div class="card-content"><h2>Обсессивно-компульсивное расстройство</h2><p><strong>Волшебный взгляд:</strong> В голове словно поселился слишком бдительный охранник, бьющий ложную тревогу. Чтобы выключить сирену, ребенку приходится выполнять ритуалы — как заклинания, отгоняющие беду.</p><p><strong>Мягкая реальность:</strong> Проявляется пугающими мыслями и повторяющимися действиями для их нейтрализации. Это состояние отлично поддается коррекции с помощью когнитивно-поведенческой терапии (КПТ).</p></div></div>
-        <div class="card"><img src="7.png" alt="ГТР" class="card-image"><div class="card-content"><h2>Генерализованное тревожное расстройство</h2><p><strong>Волшебный взгляд:</strong> Внутренний радар настроен на запредельную чувствительность. Он улавливает опасности там, где их нет, словно в ожидании шторма на ясном небе. Это просто перегруженный датчик безопасности.</p><p><strong>Мягкая реальность:</strong> Это фоновое чувство тревоги, которое мешает спать и учиться. Грамотная работа с психологом помогает подростку освоить техники расслабления и вернуть чувство базовой безопасности.</p></div></div>
-        <div class="card"><img src="8.png" alt="Панические атаки" class="card-image"><div class="card-content"><h2>Паническое расстройство</h2><p><strong>Волшебный взгляд:</strong> Похоже на удар грома среди ясного дня. Тело вдруг решает, что ему угрожает опасность, и включает сигнал «бей или беги» на полную мощность. Это пугающий, но преодолимый опыт.</p><p><strong>Мягкая реальность:</strong> Это резкий выброс адреналина с учащенным сердцебиением и страхом. Приступ конечен и абсолютно безопасен для здоровья. Специалисты учат распознавать эти состояния и правильно их проживать.</p></div></div>
-        <div class="card"><img src="9.png" alt="Депрессия" class="card-image"><div class="card-content"><h2>Депрессивное расстройство</h2><p><strong>Волшебный взгляд:</strong> Депрессия — это состояние, когда внутреннее солнце скрылось за тяжелыми тучами, а батарейка села настолько, что нет сил даже на то, что раньше приносило радость. Задача родителя — стать источником тепла, пока солнце не появится снова.</p><p><strong>Мягкая реальность:</strong> Это серьезное состояние, вызванное истощением нервной системы. Подросток не может справиться с этим просто «взяв себя в руки». Комбинация поддерживающей психотерапии и бережной помощи помогает разогнать тучи.</p></div></div>
-    </div>
+    <a href="https://t.me/+PFfgr3RmK_dmMGRi" target="_blank" class="floating-telegram" title="Присоединиться к нашему сообществу">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a5.66 5.66 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.888-.666 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" fill="#ffffff"/></svg>
+    </a>
 
-    <footer class="footer-section">
-        
-        <div class="telegram-block">
-            <h3>Мы рядом не только здесь</h3>
-            <p>Присоединяйтесь к нашему закрытому чату в Telegram. Там тепло, безопасно и всегда поддержат.</p>
-            <a href="https://t.me/+PFfgr3RmK_dmMGRi" target="_blank" class="telegram-button">
-                <svg class="telegram-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a5.66 5.66 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.888-.666 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                </svg>
-                Перейти в Telegram-канал
-            </a>
-        </div>
-
-        <div class="support-block">
-            <h3>Нужна поддержка прямо сейчас?</h3>
-            <p>Всероссийский телефон доверия для детей, подростков и их родителей:</p>
-            <a href="tel:88002000122" class="phone-number">8-800-2000-122</a>
-            <p class="phone-details">Бесплатно · Круглосуточно · Анонимно</p>
-        </div>
-        
-        <p class="disclaimer">Информация на сайте носит справочный характер и не заменяет консультацию врача.</p>
-    </footer>
-
+    <script>
+        // Скрипт для ночного режима
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            if (body.classList.contains('dark-theme')) {
+                toggleBtn.textContent = '☀️';
+                toggleBtn.title = 'Включить светлый режим';
+            } else {
+                toggleBtn.textContent = '🌙';
+                toggleBtn.title = 'Включить ночной режим';
+            }
+        });
+    </script>
 </body>
 </html>
